@@ -1,0 +1,6 @@
+<Solution>
+  <Project Path="CRUD_Finnhub_Section16_Assignments/CRUD_Finnhub_Section16_Assignments.csproj" />
+  <Project Path="Dtos/Dtos.csproj" />
+  <Project Path="Models/Models.csproj" />
+  <Project Path="Services/Services.csproj" />
+</Solution>
