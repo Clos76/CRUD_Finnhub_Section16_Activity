@@ -9,7 +9,7 @@ namespace Models
 {
     public class SellOrder
     {
-        public Guid BuyOrderID { get; set; }
+        public Guid SellOrderID { get; set; }
         [Required]
         public string StockSymbol { get; set; } = null!;
         [Required]
