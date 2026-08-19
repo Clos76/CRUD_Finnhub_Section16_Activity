@@ -18,7 +18,7 @@ namespace Dtos
         [SellOrderDateValidator(ErrorMessage ="Date can not be longer than Jan 01, 2000")]
         public DateTime DateAndTimeOfOrder { get; set; }
         [Range(1, 100000, ErrorMessage = "Range is from 1-100000")]
-        public int Quantity { get; set; }
+        public uint Quantity { get; set; }
         [Range(1, 10000, ErrorMessage = "Range is from 1-10000")]
         public double Price { get; set; }
     }

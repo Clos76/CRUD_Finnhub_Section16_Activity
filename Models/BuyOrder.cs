@@ -12,8 +12,9 @@ namespace Models
         [Required]
         public string StockName { get; set; } = null!;
         public DateTime DateAndTimeOfOrder { get; set; }
+
         [Range(1, 100000)]
-        public int Quantity  { get; set; }
+        public uint Quantity  { get; set; }
         [Range(1, 10000)]
         public double Price { get; set; }
     }
