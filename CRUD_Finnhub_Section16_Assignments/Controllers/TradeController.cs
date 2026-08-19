@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Models;
 using Services;
+using ViewModels;
 
 
 using Microsoft.Extensions.Options;
@@ -23,25 +24,49 @@ namespace CRUD_Finnhub_Section16_Assignments.Controllers
 
 
         [HttpGet("Index")]
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
-            return View();
+           var defaultStockSymbol =  _options.Value.DefaultStockSymbol;
+            var defaultQuantity = _options.Value.DefaultOrderQuantity;
+            var stockProfile = await _finnhubService.GetCompanyProfile(defaultStockSymbol);
+            var stockQuote = await _finnhubService.GetStockPriceQuote(defaultStockSymbol);
+            StockTrade stockTrade = new StockTrade()
+            {
+                StockName = stockProfile["name"].ToString(),
+                StockSymbol = stockProfile["ticker"].ToString(),
+                Price = Convert.ToDouble(stockQuote["c"]),
+                Quantity = defaultQuantity
+
+            }; 
+            return View(stockTrade);
         }
 
-        [HttpPost]
+        [HttpPost("BuyOrder")]
         public IActionResult BuyOrder()
         {
             return View();
         }
 
+        [HttpPost("SellOrder")]
         public IActionResult SellOrder()
         {
             return View();
         }
 
-        public IActionResult Orders()
+        [HttpGet("Orders")]
+        public async Task<IActionResult> Orders()
         {
-            return View();
+
+         var buyOrders =  await  _stocksService.GetBuyOrders();
+         var sellOrders = await  _stocksService.GetSellOrders();
+
+            //use our  ViewModels  -- Order--  then convert our list above to  ViewModel;
+            Orders ordersViewModel = new Orders()
+            {
+                BuyOrders = buyOrders,
+                SellOrders = sellOrders
+            };
+            return View(ordersViewModel);
         }
     }
 }
