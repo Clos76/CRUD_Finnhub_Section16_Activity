@@ -9,7 +9,6 @@
 
   <ItemGroup>
     <Folder Include="Controller\" />
-    <Folder Include="NewFolder\" />
     <Folder Include="Views\" />
   </ItemGroup>
 

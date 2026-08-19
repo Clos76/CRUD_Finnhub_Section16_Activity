@@ -4,4 +4,5 @@
   <Project Path="Dtos/Dtos.csproj" />
   <Project Path="Models/Models.csproj" />
   <Project Path="Services/Services.csproj" />
+  <Project Path="ViewModels/ViewModels.csproj" Id="ca1f8038-1a50-4b04-a9d3-1f3b8fccd0bc" />
 </Solution>

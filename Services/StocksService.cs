@@ -113,6 +113,8 @@ namespace Services
             //2. convert each one into a BuyOrderResponse - interface returncs List<BuyOrderResponse> no raw entities-
             //** controllers should never see entities directly. 
 
+            //read like this : 
+            //for each buyOrder in _buyOrders, build a new BuyOrderResponse from it.
            List<BuyOrderResponse> buyOrderRespose = _buyOrders.Select(buyOrder => new BuyOrderResponse()
             {
                 BuyOrderID = buyOrder.BuyOrderID,
