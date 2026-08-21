@@ -6,6 +6,7 @@ using ViewModels;
 
 using Microsoft.Extensions.Options;
 using Dtos;
+using System.Text.Json;
 
 namespace CRUD_Finnhub_Section16_Assignments.Controllers
 {
@@ -33,9 +34,9 @@ namespace CRUD_Finnhub_Section16_Assignments.Controllers
             var stockQuote = await _finnhubService.GetStockPriceQuote(defaultStockSymbol);
             StockTrade stockTrade = new StockTrade()
             {
-                StockName = stockProfile["name"].ToString(),
-                StockSymbol = stockProfile["ticker"].ToString(),
-                Price = Convert.ToDouble(stockQuote["c"]),
+                StockName = ((JsonElement)stockProfile["name"]).GetString(),
+                StockSymbol = ((JsonElement)stockProfile["ticker"]).GetString(),
+                Price = ((JsonElement)stockQuote["c"]).GetDouble(),
                 Quantity = defaultQuantity
 
             }; 
