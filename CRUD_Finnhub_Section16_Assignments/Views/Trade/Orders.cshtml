@@ -1,2 +1,17 @@
-﻿@using ViewModels;
-<h1>Orders</h1>
+﻿@model Orders
+
+<h3>Buy Orders</h3>
+<ul class="table">
+	@foreach(var order in Model.BuyOrders)
+	{
+		<li>@order.StockSymbol - Qty: @order.Quantity - Price: @order.Price</li>
+	}
+</ul>
+
+<h3>Sell Orders</h3>
+<ul class="table">
+	@foreach(var order in Model.SellOrders)
+	{
+		<li>ID: @order.SellOrderID - Price: @order.Price -  Qty: @order.Quantity </li>
+	}
+</ul>

@@ -1,5 +1,37 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
-@{
-}
+﻿@model ViewModels.StockTrade
+
+<div class="box">
+	<h2>@Model.StockName (@Model.StockSymbol)</h2>
+	<p>$ @Model.Price</p>
+
+</div>
+
+
+
+
+<div class="box">
+	<h2>Buy Order</h2>
+	<form class="form-card" asp-controller="Trade" asp-action="BuyOrder" method="post">
+		<input type="hidden" name="StockSymbol" value="@Model.StockSymbol" />
+		<input type="hidden" name="StockName" value="@Model.StockName" />
+		<input type="hidden" name="Price" value="@Model.Price" />
+		<input type="number" name="Quantity" value="@Model.Quantity" />
+
+		<button type="submit">Buy</button>
+
+	</form>
+</div>
+
+
+<div class="box">
+	<h2>Sell Order</h2>
+	<form class="form-card" asp-controller="Trade" asp-action="SellOrder" method="post">
+		<input type="hidden" name="StockName" value="@Model.StockName" />
+		<input type="hidden" name="StockSymbol" value="@Model.StockSymbol" />
+		<input type="hidden" name="Price" value="@Model.Price" />
+
+		<input type="number" name="Quantity" value="@Model.Quantity" />
+
+		<button type="submit">Sell</button>
+	</form>
+</div>
