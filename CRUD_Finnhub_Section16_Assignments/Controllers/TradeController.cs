@@ -5,6 +5,7 @@ using ViewModels;
 
 
 using Microsoft.Extensions.Options;
+using Dtos;
 
 namespace CRUD_Finnhub_Section16_Assignments.Controllers
 {
@@ -42,15 +43,56 @@ namespace CRUD_Finnhub_Section16_Assignments.Controllers
         }
 
         [HttpPost("BuyOrder")]
-        public IActionResult BuyOrder()
+        public async Task<IActionResult> BuyOrder(BuyOrderRequest buyOrderRequest)
         {
-            return View();
+            buyOrderRequest.DateAndTimeOfOrder = DateTime.Now;
+
+            if (ModelState.IsValid)
+            {
+                var buyOrder = await _stocksService.CreateBuyOrder(buyOrderRequest);
+                return RedirectToAction("Orders");
+            }
+            else
+            {
+
+                StockTrade stockTrade = new StockTrade()
+                {
+                    StockName = buyOrderRequest.StockName,
+                    StockSymbol = buyOrderRequest.StockSymbol,
+                    Price = buyOrderRequest.Price,
+                    Quantity = buyOrderRequest.Quantity,
+                };
+
+                return View("Index",stockTrade);
+            }
+
+           
         }
 
         [HttpPost("SellOrder")]
-        public IActionResult SellOrder()
+        public async Task<IActionResult> SellOrder(SellOrderRequest sellOrderRequest)
         {
-            return View();
+            //need update date 
+            sellOrderRequest.DateAndTimeOfOrder = DateTime.Now;
+
+            if (ModelState.IsValid)
+            {
+              var sellOrder= await  _stocksService.CreateSellOrder(sellOrderRequest);
+              return RedirectToAction("Orders");
+            }
+            else
+            {
+                StockTrade sellTrade = new StockTrade()
+                {
+                    StockName = sellOrderRequest.StockName,
+                    StockSymbol = sellOrderRequest.StockSymbol,
+                    Price = sellOrderRequest.Price,
+                    Quantity = sellOrderRequest.Quantity
+                };
+                return View("Index", sellTrade);
+            }
+
+           
         }
 
         [HttpGet("Orders")]
