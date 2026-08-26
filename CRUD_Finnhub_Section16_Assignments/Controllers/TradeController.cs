@@ -47,6 +47,8 @@ namespace CRUD_Finnhub_Section16_Assignments.Controllers
         public async Task<IActionResult> BuyOrder(BuyOrderRequest buyOrderRequest)
         {
             buyOrderRequest.DateAndTimeOfOrder = DateTime.Now;
+            ModelState.Clear();
+            TryValidateModel(buyOrderRequest);
 
             if (ModelState.IsValid)
             {
@@ -75,6 +77,8 @@ namespace CRUD_Finnhub_Section16_Assignments.Controllers
         {
             //need update date 
             sellOrderRequest.DateAndTimeOfOrder = DateTime.Now;
+            ModelState.Clear();
+            TryValidateModel(sellOrderRequest);
 
             if (ModelState.IsValid)
             {

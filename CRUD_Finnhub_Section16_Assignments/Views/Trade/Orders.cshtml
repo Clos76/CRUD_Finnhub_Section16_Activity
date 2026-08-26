@@ -4,7 +4,7 @@
 <ul class="table">
 	@foreach(var order in Model.BuyOrders)
 	{
-		<li>@order.StockSymbol - Qty: @order.Quantity - Price: @order.Price</li>
+		<li class="card">@order.StockSymbol - Qty: @order.Quantity - Price: @order.Price</li>
 	}
 </ul>
 
@@ -12,6 +12,6 @@
 <ul class="table">
 	@foreach(var order in Model.SellOrders)
 	{
-		<li>ID: @order.SellOrderID - Price: @order.Price -  Qty: @order.Quantity </li>
+		<li class="card">ID: @order.SellOrderID - Price: @order.Price -  Qty: @order.Quantity </li>
 	}
 </ul>
