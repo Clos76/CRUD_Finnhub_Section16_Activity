@@ -1,5 +1,6 @@
 <Solution>
   <Project Path="CRUD_Finnhub_Section16_Assignments/CRUD_Finnhub_Section16_Assignments.csproj" />
+  <Project Path="CRUD_Unit16_Tests/CRUD_Unit16_Tests.csproj" Id="ed15365c-967c-4326-a841-f83cd8ccb505" />
   <Project Path="CustomValidators/CustomValidators.csproj" Id="64852d8c-fefe-4534-8e47-59edefc74d55" />
   <Project Path="Dtos/Dtos.csproj" />
   <Project Path="Models/Models.csproj" />
